@@ -1,0 +1,29 @@
+#include <iostream>
+using namespace std;
+
+#define MAX 100000
+
+bool arraysEqual(int a[], int b[], int n) {
+    int hash[MAX] = {0};
+
+    for (int i = 0; i < n; i++)
+        hash[a[i]]++;
+
+    for (int i = 0; i < n; i++)
+        hash[b[i]]--;
+
+    for (int i = 0; i < MAX; i++)
+        if (hash[i] != 0)
+            return false;
+
+    return true;
+}
+
+int main() {
+    int a[] = {1, 7, 1};
+    int b[] = {7, 7, 1};
+    int n = 3;
+
+    cout << (arraysEqual(a, b, n) ? "true" : "false");
+    return 0;
+}
