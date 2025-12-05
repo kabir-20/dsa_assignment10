@@ -1,0 +1,24 @@
+#include <iostream>
+using namespace std;
+
+#define MAX 100000
+
+int main() {
+    int arr[] = {1, 2, 2, 4, 1};
+    int n = 5;
+
+    int hash[MAX] = {0};
+    for (int i = 0; i < n; i++)
+        hash[arr[i]]++;
+
+    int best = -1, freq = 0;
+    for (int i = 0; i < MAX; i++) {
+        if (hash[i] > freq || (hash[i] == freq && i > best)) {
+            freq = hash[i];
+            best = i;
+        }
+    }
+
+    cout << best;
+    return 0;
+}
