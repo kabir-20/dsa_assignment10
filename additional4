@@ -22,6 +22,7 @@ void print(Node* head) {
         cout << head->data << " ";
         head = head->next;
     }
+    cout << endl;
 }
 
 Node* getIntersection(Node* h1, Node* h2) {
@@ -42,4 +43,26 @@ Node* getIntersection(Node* h1, Node* h2) {
     return res;
 }
 
-Node* getUnion(Node* h1, Nod
+Node* getUnion(Node* h1, Node* h2) {
+    unordered_set<int> s;
+    Node* res = NULL;
+
+    while (h1) {
+        if (s.find(h1->data) == s.end()) {
+            s.insert(h1->data);
+            res = insertEnd(res, h1->data);
+        }
+        h1 = h1->next;
+    }
+
+    while (h2) {
+        if (s.find(h2->data) == s.end()) {
+            s.insert(h2->data);
+            res = insertEnd(res, h2->data);
+        }
+        h2 = h2->next;
+    }
+
+    return res;
+}
+
